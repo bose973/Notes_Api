@@ -33,6 +33,26 @@ async def insert_note(request: Request):
     formDict["imp"] = True if "imp" in formDict else False
     inserted_note=connect_withMongo.client.notes.notes.insert_one(formDict)
     return templates.TemplateResponse(
-        request=request, name="notes_added.html", context={"Success":True,"Home_Page":"http://127.0.0.1:8000/"}
+        request=request, name="notes_added.html", context={"Success":True}
     )
 
+@note.get("/impNotes")
+async def show_impNotes(request: Request):
+    docs=connect_withMongo.client.notes.notes.find({})
+    imp_Docs=[]
+    for doc in docs:
+        if doc["imp"]==True:
+            imp_Docs.append(doc)
+    return templates.TemplateResponse(
+        request=request, name="imp_notes.html", context={"imp_Docs" : imp_Docs}
+    )
+
+@note.get("/allNotes")
+async def show_allNotes(request: Request):
+    docs=connect_withMongo.client.notes.notes.find({})
+    all_Docs=[]
+    for doc in docs:
+        all_Docs.append(doc)
+    return templates.TemplateResponse(
+        request=request, name="all_notes.html", context={"all_Docs" : all_Docs}
+    )

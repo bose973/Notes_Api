@@ -47,9 +47,14 @@
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
       </div>
+      <br>
+      <br>
       <div class="container">
-        
-        {% if newDocs|length %}
+        <button type="button" class="btn btn-info" onclick="location.href='http://127.0.0.1:8000/impNotes'">Important Notes</button>
+        <br>
+        <br>
+        <button type="button" class="btn btn-secondary" onclick="location.href='http://127.0.0.1:8000/allNotes'">All Notes</button>
+        <!-- {% if newDocs|length %}
             <h2>Your Added Notes</h2>
             {% for item in newDocs %}
             <div>
@@ -60,7 +65,7 @@
             {% endfor %}
         {% else %}
             <h2>No notes have been added</h2>
-        {% endif %}
+        {% endif %} -->
       </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL YOUR iNotes</title>
+</head>
+<body>
+    <div class="container">
+        {% if all_Docs|length %}
+            <h2>Your Added Notes</h2>
+            {% for item in all_Docs %}
+            <div>
+                Title: {{ item.title }} <br>
+                Desc: {{ item.desc }} <br>
+                Important: {{ item.imp }} <br> <br>
+            </div>
+            {% endfor %}
+        {% else %}
+            <h2>No notes have been added</h2>
+        {% endif %}<br>
+        <button type="button" class="btn btn-primary" onclick="location.href='http://127.0.0.1:8000/'">HOME Page</button>
+    </div>
+</body>
+</html>
