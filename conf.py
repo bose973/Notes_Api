@@ -1,0 +1,1 @@
+mongo_uri="mongodb+srv://bosesid2001:sidsidDB_SU%40331@learn-fastapi.sxntjfk.mongodb.net/?retryWrites=true&w=majority&appName=learn-FastAPi"

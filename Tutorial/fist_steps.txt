@@ -1,0 +1,13 @@
+to start the app: fastapi dev main.py
+
+learning:
+1) Learnt how to define app, start app
+2) How to include html
+3)How to apply Jinja templeting in html
+4)How to connect mongodb with a fastapi request.
+5)How to read mongodb collection db using api in the html.
+6)How to push data into mongodb collection from Ui using html form.
+7)Importance of baseModel from pydantic ( to define schema )
+8)Importance of API Router
+9)Bootstrapping
+10)Importance of keeping different folders ( separate folder for routes, html and template)
