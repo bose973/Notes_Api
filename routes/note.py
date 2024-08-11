@@ -32,5 +32,7 @@ async def insert_note(request: Request):
     print(formDict)
     formDict["imp"] = True if "imp" in formDict else False
     inserted_note=connect_withMongo.client.notes.notes.insert_one(formDict)
-    return {"Success":True}
+    return templates.TemplateResponse(
+        request=request, name="notes_added.html", context={"Success":True,"Home_Page":"http://127.0.0.1:8000/"}
+    )
 
