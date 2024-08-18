@@ -72,4 +72,5 @@ async def notes_del(request: Request):
                 key=key[5:]
                 print(key)
                 connect_withMongo.client.notes.notes.delete_one({"_id":ObjectId(key)})
-    return {"Success":True,"Message" :f"Document with Objectid-{ObjectId(key)} has been deleted"}
+                return {"Success":True,"Message" :f"Document with Objectid-{ObjectId(key)} has been deleted"}
+    return {"Message" :f"No documents to delete"}
