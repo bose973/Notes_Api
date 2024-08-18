@@ -51,7 +51,10 @@ async def show_impNotes(request: Request):
 async def show_allNotes(request: Request):
     docs=connect_withMongo.client.notes.notes.find({})
     all_Docs=[]
+    count=0
     for doc in docs:
+        doc["index_num"]=count+1
+        count=count+1
         all_Docs.append(doc)
     return templates.TemplateResponse(
         request=request, name="all_notes.html", context={"all_Docs" : all_Docs}
