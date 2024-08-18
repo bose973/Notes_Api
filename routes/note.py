@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 from models.note import Note
 from schemas.note import noteEntity,notesEntity
 import connect_withMongo
+from bson.objectid import ObjectId
 
 note=APIRouter()
 
@@ -59,3 +60,16 @@ async def show_allNotes(request: Request):
     return templates.TemplateResponse(
         request=request, name="all_notes.html", context={"all_Docs" : all_Docs}
     )
+
+@note.post("/allNotes")
+async def notes_del(request: Request):
+    input = await request.form()
+    inputDict=dict(input)
+    print(inputDict)
+    if inputDict!={}:
+        for key,value in inputDict.items():
+            if value=="on":
+                key=key[5:]
+                print(key)
+                connect_withMongo.client.notes.notes.delete_one({"_id":ObjectId(key)})
+    return {"Success":True,"Message" :f"Document with Objectid-{ObjectId(key)} has been deleted"}
