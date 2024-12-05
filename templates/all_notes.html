@@ -4,18 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALL YOUR iNotes</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
 </head>
 <body>
     <div class="container">
         {% if all_Docs|length %}
             <h2>Your Added Notes</h2>
-            {% for item in all_Docs %}
-            <div>
-                Title: {{ item.title }} <br>
-                Desc: {{ item.desc }} <br>
-                Important: {{ item.imp }} <br> <br>
-            </div>
-            {% endfor %}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col" >Desc</th>
+                        <th scope="col">Important?</th>
+                        <th scope="col">Done?</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in all_Docs %}
+                        <tr>
+                            <td scope="row">{{ item.index_num }}</th>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.desc }}</td>
+                            <td>{{ item.imp }}</td>
+                            <td>
+                                <form action="/allNotes" method="post">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="done_{{ item._id }}" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                                
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
         {% else %}
             <h2>No notes have been added</h2>
         {% endif %}<br>
